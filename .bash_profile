@@ -54,6 +54,17 @@ function work() {
   [ -d $PROJECTS_HOME/$@/.venv ] && source .venv/bin/activate
   [ -d $PROJECTS_HOME/$@/.env ] && source .env/bin/activate
 }
+function complete_work() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=`ls $PROJECTS_HOME`
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F complete_work work
 
 function mysqlmem () {
   mysql.server stop || true
@@ -62,12 +73,5 @@ function mysqlmem () {
   mysql.server start --datadir=/Volumes/ramdisk
 }
 
-
-# Globo.com
-alias clean_db_test="./manage.py dbmigrate --settings=settings_test --drop"
-alias thumbor_start="thumbor --conf='thumbor_config.py' --keyfile='thumbor.key' &"
-
-function marketplace_sync () {
-  scp -r watcher@riovlb467.globoi.com:/mnt/projetos/deploy-be/gshow/marketplace/* $PROJECTS_HOME/gshow/gshow/marketplace_local
-  scp -r watcher@riovlb467.globoi.com:/mnt/projetos/static/et/gs/static/2015/extensoes $PROJECTS_HOME/gshow/gshow/static
-}
+# Add customizations in a file .local_profile
+[ -f $HOME/.local_profile ] && source $HOME/.local_profile
