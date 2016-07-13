@@ -1,7 +1,12 @@
 # Git
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
-export PS1="$ \w\$(__git_ps1) "
+# Returns "*" if the current git branch is dirty.
+function parse_git_dirty {
+  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
+}
+
+export PS1="\w\$(__git_ps1)\$(parse_git_dirty) $ "
 
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
