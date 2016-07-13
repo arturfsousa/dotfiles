@@ -45,6 +45,7 @@ export PROJECTS_HOME=$HOME/Projects
 alias l="ls -la"
 alias clean_pyc="find . -iname '*.pyc' -delete"
 alias runserver="./manage.py runserver"
+alias upload_pypi="python ./setup.py sdist upload -q --show-response -r ipypi-local"
 
 # Functions
 function work() {
