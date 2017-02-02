@@ -1,5 +1,6 @@
 # Git
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
