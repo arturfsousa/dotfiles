@@ -42,6 +42,8 @@ alias l="ls -la"
 alias clean_pyc="find . -iname '*.pyc' -delete"
 alias runserver="./manage.py runserver"
 alias upload_pypi="python ./setup.py sdist upload -q --show-response -r ipypi-local"
+alias egrep="egrep --colour"
+alias grep="egrep --colour"
 
 # Functions
 function work() {
@@ -82,8 +84,9 @@ function ps_format {
   local      COLOR3="\[$(tput setaf 6)\]"
   local      COLOR4="\[$(tput setaf 13)\]"
   local      COLOR5="\[$(tput setaf 9)\]"
+  local      COLOR6="\[$(tput setaf 77)\]" # Default
   local   END_COLOR="\[$(tput sgr0)\]"
-  export PS1="$COLOR1\w$COLOR2\$(__git_ps1)$COLOR5\$(parse_git_dirty) $COLOR1$ $END_COLOR"
+  export PS1="$COLOR1\w$COLOR2\$(__git_ps1)$COLOR5\$(parse_git_dirty) $COLOR1$ $COLOR6"
 }
 ps_format
 
