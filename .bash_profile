@@ -1,13 +1,6 @@
 # Git
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 
-# Returns "*" if the current git branch is dirty.
-function parse_git_dirty {
-  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
-}
-
-export PS1="\w\$(__git_ps1)\$(parse_git_dirty) $ "
-
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
 
@@ -39,6 +32,9 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
 
+# GO
+export GOPATH=$HOME/Projects/go
+
 # Projects
 export PROJECTS_HOME=$HOME/Projects
 
@@ -49,6 +45,7 @@ alias upload_pypi="python ./setup.py sdist upload -q --show-response -r ipypi-lo
 
 # Functions
 function work() {
+  # Activates python virtualenvs projects
   [ -d $PROJECTS_HOME/$@ ] && cd $PROJECTS_HOME/$@
   [ -d $VIRTUALENVS_HOME/$@ ] && source $VIRTUALENVS_HOME/$@/bin/activate
   [ -d $PROJECTS_HOME/$@/.venv ] && source .venv/bin/activate
@@ -73,5 +70,35 @@ function mysqlmem () {
   mysql.server start --datadir=/Volumes/ramdisk
 }
 
+function parse_git_dirty {
+  # Returns "*" if the current git branch is dirty
+  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
+}
+
+function ps_format {
+  # Use color_palette to check color options
+  local      COLOR1="\[$(tput setaf 39)\]"
+  local      COLOR2="\[$(tput setaf 12)\]"
+  local      COLOR3="\[$(tput setaf 6)\]"
+  local      COLOR4="\[$(tput setaf 13)\]"
+  local      COLOR5="\[$(tput setaf 9)\]"
+  local   END_COLOR="\[$(tput sgr0)\]"
+  export PS1="$COLOR1\w$COLOR2\$(__git_ps1)$COLOR5\$(parse_git_dirty) $COLOR1$ $END_COLOR"
+}
+ps_format
+
+function color_palette {
+  for C in {0..255}; do
+      tput setab $C
+      tput setaf 255
+      echo -n "   $C    "
+  done
+  tput sgr0
+  echo
+}
+
 # Add customizations in a file .local_profile
 [ -f $HOME/.local_profile ] && source $HOME/.local_profile
+
+# Custom shell
+source ~/shell_functions.sh
