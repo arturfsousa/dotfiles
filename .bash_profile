@@ -8,22 +8,24 @@ export ARCHFLAGS="-arch x86_64"
 # Ensure user-installed binaries take precedence
 export PATH=/usr/local/bin:$PATH
 
+# Projects Workspace
+export PROJECT_HOME=$HOME/Projects
+
+# Python
+export VIRTUALENVS_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$VIRTUALENVS_HOME
+
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_CONFIG_FILE=$HOME/.pip/pip.conf
+
+eval "$(pyenv init -)"
+pyenv virtualenvwrapper_lazy
+
 # Load .bashrc if it exists
 test -f ~/.bashrc && source ~/.bashrc
 
 # Homebrew
 [ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
-
-# pip should only run if there is a virtualenv currently activated
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_CONFIG_FILE=$HOME/.pip/pip.conf
-
-# Virtualenv
-export VIRTUALENVS_HOME=$HOME/.virtualenvs
-
-# Virtualenvwrapper
-source /usr/local/bin/virtualenvwrapper.sh
-export WORKON_HOME=$VIRTUALENVS_HOME
 
 # RVM
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -36,9 +38,7 @@ export NVM_DIR="$HOME/.nvm"
 # GO
 export GOPATH=$HOME/Projects/go
 
-# Projects
-export PROJECTS_HOME=$HOME/Projects
-
+# Aliases
 alias l="ls -la"
 alias clean_pyc="find . -iname '*.pyc' -delete"
 alias runserver="./manage.py runserver"
@@ -49,17 +49,17 @@ alias grep="egrep --colour"
 # Functions
 function work() {
   # Activates python virtualenvs projects
-  [ -d $PROJECTS_HOME/$@ ] && cd $PROJECTS_HOME/$@
+  [ -d $PROJECT_HOME/$@ ] && cd $PROJECT_HOME/$@
   [ -d $VIRTUALENVS_HOME/$@ ] && source $VIRTUALENVS_HOME/$@/bin/activate
-  [ -d $PROJECTS_HOME/$@/.venv ] && source .venv/bin/activate
-  [ -d $PROJECTS_HOME/$@/.env ] && source .env/bin/activate
+  [ -d $PROJECT_HOME/$@/.venv ] && source .venv/bin/activate
+  [ -d $PROJECT_HOME/$@/.env ] && source .env/bin/activate
 }
 function complete_work() {
     local cur prev opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts=`ls $PROJECTS_HOME`
+    opts=`ls $PROJECT_HOME`
 
     COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
     return 0
