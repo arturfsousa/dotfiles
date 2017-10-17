@@ -40,6 +40,9 @@ export NVM_DIR="$HOME/.nvm"
 # GO
 export GOPATH=$HOME/Projects/go
 
+# Visual Studio Code
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # Aliases
 alias l="ls -la"
 alias clean_pyc="find . -iname '*.pyc' -delete"
