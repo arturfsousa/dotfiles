@@ -41,7 +41,7 @@ export NVM_DIR="$HOME/.nvm"
 export GOPATH=$HOME/Projects/go
 
 # Visual Studio Code
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
 
 # Aliases
 alias l="ls -la"
@@ -50,6 +50,7 @@ alias runserver="./manage.py runserver"
 alias upload_pypi="python ./setup.py sdist upload -q --show-response -r ipypi-local"
 alias egrep="egrep --colour"
 alias grep="egrep --colour"
+alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 
 # Functions
 function work() {
