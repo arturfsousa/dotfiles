@@ -1,0 +1,1 @@
+CFLAGS="-I$(brew --prefix openssl)/include $CFLAGS" LDFLAGS="-L$(brew --prefix openssl)/lib $LDFLAGS" PYCURL_SSL_LIBRARY=openssl pip install pycurl --compile
