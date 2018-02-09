@@ -8,3 +8,4 @@
 	cm = !git add -A && git commit -m
 	slog = log --decorate --date=relative --pretty=\"format:%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)[%ad by %an]\"
 	sglog = log --decorate --graph --date=relative --pretty=\"format:%C(yellow)%h%C(auto)%d%Creset %s %C(bold blue)[%ad by %an]\"
+	olog = log --oneline --all --graph
