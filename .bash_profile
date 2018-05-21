@@ -39,6 +39,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # GO
 export GOPATH=$HOME/Projects/go
+export PATH=$PATH:$GOPATH/bin
 
 # Visual Studio Code
 export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
