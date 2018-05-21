@@ -111,4 +111,4 @@ function color_palette {
 [ -f $HOME/.local_profile ] && source $HOME/.local_profile
 
 # Custom shell
-source ~/shell_functions.sh
+[ -f $HOME/shell_functions.sh ] && source $HOME/shell_functions.sh
