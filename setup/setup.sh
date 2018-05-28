@@ -1,7 +1,8 @@
-ln -sf ~/Projects/dotfiles/.bash_profile ~/.bash_profile
-ln -sf ~/Projects/dotfiles/.gitconfig ~/.gitconfig
-ln -sf ~/Projects/dotfiles/.gitignore_global ~/.gitignore_global
-ln -sf ~/Projects/dotfiles/.pylintrc ~/.pylintrc
+ln -sf `pwd`/.bash_profile ~/.bash_profile
+ln -sf `pwd`/.editorconfig ~/.editorconfig
+ln -sf `pwd`/.gitconfig ~/.gitconfig
+ln -sf `pwd`/.gitignore_global ~/.gitignore_global
+ln -sf `pwd`/.pylintrc ~/.pylintrc
 
 # https://medium.com/welcome-to-the-django/guia-definitivo-para-organizar-meu-ambiente-python-a16e2479b753https://medium.com/welcome-to-the-django/guia-definitivo-para-organizar-meu-ambiente-python-a16e2479b753
 brew install pyenv
