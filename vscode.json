@@ -1,0 +1,9 @@
+{
+  "window.zoomLevel": 0,
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true
+}
