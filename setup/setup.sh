@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ln -sf `pwd`/.bash_profile ~/.bash_profile
 ln -sf `pwd`/.editorconfig ~/.editorconfig
 ln -sf `pwd`/.gitconfig ~/.gitconfig
@@ -34,19 +36,4 @@ npm install --lts
 
 brew install watchman
 brew install yarn
-
-npm install -g npmrc
-npmrc
-npm login
-
-npmrc -c artifactory
-npm config set registry https://artifactory.globoi.com/artifactory/api/npm/npm-repos/
-npm login
-
-brew tap tsuru/homebrew-tsuru
-brew install tsuru
-
-tsuru target-add default https://tsuru.globoi.com -s
-tsuru login
-
 brew install go
