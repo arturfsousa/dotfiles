@@ -3,6 +3,7 @@
 ## Zshell
 
 https://gist.github.com/derhuerst/12a1558a4b408b3b2b6e
+https://gist.github.com/OliverJAsh/1a7eff33bee819eab4bee9fc8584ecc5
 
 ```
 brew install zsh
