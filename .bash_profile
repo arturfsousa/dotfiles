@@ -1,7 +1,3 @@
-# Git
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
-
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
 
@@ -46,7 +42,8 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
 
 # Aliases
-alias l="ls -la"
+alias l="ls -l"
+alias ll="ls -la"
 alias clean_pyc="find . -iname '*.pyc' -delete"
 alias runserver="./manage.py runserver"
 alias upload_pypi="python ./setup.py sdist upload -q --show-response -r ipypi-local"
@@ -86,28 +83,28 @@ function parse_git_dirty {
   [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
 }
 
-function ps_format {
-  # Use color_palette to check color options
-  local      COLOR1="\[$(tput setaf 39)\]"
-  local      COLOR2="\[$(tput setaf 12)\]"
-  local      COLOR3="\[$(tput setaf 6)\]"
-  local      COLOR4="\[$(tput setaf 13)\]"
-  local      COLOR5="\[$(tput setaf 9)\]"
-  local      COLOR6="\[$(tput setaf 77)\]" # Default
-  local   END_COLOR="\[$(tput sgr0)\]"
-  export PS1="$COLOR1\w$COLOR2\$(__git_ps1)$COLOR5\$(parse_git_dirty) $COLOR1$ $COLOR6"
-}
-ps_format
+# function ps_format {
+#   # Use color_palette to check color options
+#   local      COLOR1="\[$(tput setaf 39)\]"
+#   local      COLOR2="\[$(tput setaf 12)\]"
+#   local      COLOR3="\[$(tput setaf 6)\]"
+#   local      COLOR4="\[$(tput setaf 13)\]"
+#   local      COLOR5="\[$(tput setaf 9)\]"
+#   local      COLOR6="\[$(tput setaf 77)\]" # Default
+#   local   END_COLOR="\[$(tput sgr0)\]"
+#   export PS1="$COLOR1\w$COLOR2\$(__git_ps1)$COLOR5\$(parse_git_dirty) $COLOR1$ $COLOR6"
+# }
+# ps_format
 
-function color_palette {
-  for C in {0..255}; do
-      tput setab $C
-      tput setaf 255
-      echo -n "   $C    "
-  done
-  tput sgr0
-  echo
-}
+# function color_palette {
+#   for C in {0..255}; do
+#       tput setab $C
+#       tput setaf 255
+#       echo -n "   $C    "
+#   done
+#   tput sgr0
+#   echo
+# }
 
 # Add customizations in a file .local_profile
 [ -f $HOME/.local_profile ] && source $HOME/.local_profile

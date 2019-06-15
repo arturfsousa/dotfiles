@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ln -sf `pwd`/.zshrc ~/.zshrc
 ln -sf `pwd`/.bash_profile ~/.bash_profile
 ln -sf `pwd`/.editorconfig ~/.editorconfig
 ln -sf `pwd`/.gitconfig ~/.gitconfig
