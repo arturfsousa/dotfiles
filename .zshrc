@@ -2,7 +2,7 @@ source ~/.bash_profile
 
 #
 # Basic
-# ----------
+# -----
 #
 
 # History
@@ -28,6 +28,18 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 
 #
+# Autosuggestions
+# ---------------
+#
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#
+# Syntax highlight
+# ----------------
+#
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#
 # History search
 # --------------
 #
@@ -38,7 +50,7 @@ bindkey '^[[B' history-substring-search-down
 
 #
 # Menu seletion
-# --------------
+# -------------
 #
 
 # Highlight
@@ -49,16 +61,35 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' format '%B---- %d%b'
 
 #
-# Theme
-# --------------
+# Theme prompt
+# ------------
 #
-autoload -U promptinit
-promptinit
-prompt pure
+# autoload -U promptinit
+# promptinit
+# prompt spaceship
 
 #
 # Word style: directory delimiter
-# --------------
+# -------------------------------
 #
 autoload -U select-word-style
 select-word-style bash
+
+#
+# Spaceship
+# ---------
+#
+SPACESHIP_VI_MODE_SHOW=false
+
+#
+# Antigen
+# ---------
+#
+source /usr/local/share/antigen/antigen.zsh
+
+antigen theme denysdovhan/spaceship-prompt
+
+antigen bundle g-plane/zsh-yarn-autocompletions
+antigen bundle lukechilds/zsh-better-npm-completion
+
+antigen apply
