@@ -66,6 +66,18 @@ Check the `vscode.json` preferences file.
 - Cursor: Underline
 - [x] Blinking cursor
 
+### Brew
+
+```sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew install watchman
+brew install jq
+brew install ack
+brew install ag
+brew install wrk
+```
+
 ### Zshell
 
 Check the `.zshrc` preferences file. There is a separate `.bash_profile` file
