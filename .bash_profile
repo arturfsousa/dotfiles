@@ -1,4 +1,9 @@
-# Set architecture flags
+test -f ~/.bashrc && source ~/.bashrc
+
+#
+# Basic
+# -----
+#
 export ARCHFLAGS="-arch x86_64"
 
 # Ensure user-installed binaries take precedence
@@ -7,25 +12,32 @@ export PATH=/usr/local/bin:$PATH
 # Projects Workspace
 export PROJECT_HOME=$HOME/Projects
 
-# Python
-export VIRTUALENVS_HOME=$HOME/.virtualenvs
-export WORKON_HOME=$VIRTUALENVS_HOME
+#
+# Homebrew
+# --------
+#
+[ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
 
+#
+# Python
+# ------
+#
+
+# Pip
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_CONFIG_FILE=$HOME/.pip/pip.conf
+
+# Pyenv virtualenv
+export VIRTUALENVS_HOME=$HOME/.virtualenvs
+export WORKON_HOME=$VIRTUALENVS_HOME
 
 eval "$(pyenv init -)"
 pyenv virtualenvwrapper_lazy
 
-# Load .bashrc if it exists
-test -f ~/.bashrc && source ~/.bashrc
-
-# Homebrew
-[ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
-
-# RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+#
+# NodeJS
+# ------
+#
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -33,15 +45,34 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# GO
+#
+# Ruby
+# ----
+#
+
+# RVM
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+#
+# Go Lang
+# -------
+#
+
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
 
-# Visual Studio Code
+#
+# VS Code
+# -------
+#
 export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
 
+#
 # Aliases
+# -------
+#
 alias cl="clear"
 alias l="ls -l"
 alias ll="ls -la"
@@ -52,7 +83,12 @@ alias egrep="egrep --colour"
 alias grep="egrep --colour"
 alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 
-# Functions
+#
+# General utilities
+# -----------------
+#
+
+# Go to a project dir and activate a python venv
 function work() {
   # Activates python virtualenvs projects
   [ -d $PROJECT_HOME/$@ ] && cd $PROJECT_HOME/$@
@@ -72,6 +108,7 @@ function complete_work() {
 }
 complete -F complete_work work
 
+# Run MYSQL in memory
 function mysqlmem () {
   mysql.server stop || true
   diskutil erasevolume HFS+ 'ramdisk' `hdiutil attach -nomount ram://1165430`
@@ -79,11 +116,13 @@ function mysqlmem () {
   mysql.server start --datadir=/Volumes/ramdisk
 }
 
-function parse_git_dirty {
-  # Returns "*" if the current git branch is dirty
-  [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
-}
+# # Check if a git repo is dirty
+# function parse_git_dirty {
+#   # Returns "*" if the current git branch is dirty
+#   [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]] && echo "*"
+# }
 
+# # Custom prompt
 # function ps_format {
 #   # Use color_palette to check color options
 #   local      COLOR1="\[$(tput setaf 39)\]"
@@ -97,6 +136,7 @@ function parse_git_dirty {
 # }
 # ps_format
 
+# # Colorize the prompt
 # function color_palette {
 #   for C in {0..255}; do
 #       tput setab $C
@@ -107,8 +147,14 @@ function parse_git_dirty {
 #   echo
 # }
 
-# Add customizations in a file .local_profile
+#
+# Custom local_profile
+# --------------------
+#
 [ -f $HOME/.local_profile ] && source $HOME/.local_profile
 
-# Custom shell
+#
+# Custom scripts
+# --------------
+#
 [ -f $HOME/shell_functions.sh ] && source $HOME/shell_functions.sh
