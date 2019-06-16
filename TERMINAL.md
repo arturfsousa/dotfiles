@@ -46,7 +46,11 @@ antigen apply
 
 ## Iterm
 
-- `Artur.itermcolors` - Colors preset
+# Color presets
+
+- `Artur.itermcolors`
+- https://github.com/nathanbuchar/atom-one-dark-terminal
+
 - Font
   - FiraCode
   - Check Unicode Version 9 Widths
