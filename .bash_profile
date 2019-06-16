@@ -42,6 +42,7 @@ export PATH=$PATH:$GOPATH/bin
 export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
 
 # Aliases
+alias cl="clear"
 alias l="ls -l"
 alias ll="ls -la"
 alias clean_pyc="find . -iname '*.pyc' -delete"

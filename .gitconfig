@@ -1,15 +1,47 @@
 [user]
 	name = Artur Sousa
 	email = arturfelipe.sousa@gmail.com
-[alias]
-	st = status
-	co = checkout
-	cob = checkout -b
-	cm = !git add -A && git commit -m
-	slog = log --decorate --date=relative --pretty=\"format:%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)[%ad by %an]\"
-	sglog = log --decorate --graph --date=relative --pretty=\"format:%C(yellow)%h%C(auto)%d%Creset %s %C(bold blue)[%ad by %an]\"
-	olog = log --oneline --all --graph
 [core]
 	excludesfile = ~/.gitignore_global
 [pull]
 	rebase = true
+[alias]
+	s = status
+  st = status
+
+  ### add ###
+  a = git add
+  ap = git add -p
+
+  ### commit ###
+  c = git commit
+  cm = git commit -m
+	ca = !git add -A && git commit -m
+
+  ### pull ###
+  p = pull
+  pr = pull --rebase
+  pp = pull --rebase=preserve
+
+  ### rebase ###
+  rb = rebase
+
+  ### diff ###
+  d = diff
+  dc = diff --cached
+  ds = diff --staged
+
+  ### checkout ###
+
+  o = checkout
+	ob = checkout -b
+
+  ### log ###
+  l = log --graph
+  lp = log -p
+  lo = log --oneline --all --graph
+  ll = log --decorate --date=relative --pretty=\"format:%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)[%ad by %an]\"
+	lll = log --decorate --graph --date=relative --pretty=\"format:%C(yellow)%h%C(auto)%d%Creset %s %C(bold blue)[%ad by %an]\"
+
+  ### clean ###
+  cl = clean -ffdx
