@@ -10,12 +10,12 @@
   st = status
 
   ### add ###
-  a = git add
-  ap = git add -p
+  a = add
+  ap = add -p
 
   ### commit ###
-  c = git commit
-  cm = git commit -m
+  c = commit
+  cm = commit -m
 	ca = !git add -A && git commit -m
 
   ### pull ###
@@ -50,3 +50,6 @@
 
   ### clean ###
   cl = clean -ffdx
+
+  ### general ###
+  branch-name = rev-parse --abbrev-ref HEAD
