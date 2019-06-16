@@ -22,6 +22,11 @@
   p = pull
   pr = pull --rebase
   pp = pull --rebase=preserve
+  pb = "!git pull origin $(git branch-name)"
+
+  ### push ###
+  u = push
+  ub = "!git push origin $(git branch-name)"
 
   ### rebase ###
   rb = rebase
