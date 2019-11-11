@@ -5,7 +5,8 @@
 export ARCHFLAGS="-arch x86_64"
 
 # Ensure user-installed binaries take precedence
-export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # Projects Workspace
 export PROJECT_HOME=$HOME/Projects
