@@ -12,6 +12,10 @@ export PATH=/usr/local/bin:$PATH
 # Projects Workspace
 export PROJECT_HOME=$HOME/Projects
 
+# Colors
+export LSCOLORS='exfxcxdxbxegedabagacad'
+export CLICOLOR=true
+
 #
 # Homebrew
 # --------
@@ -73,9 +77,16 @@ export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app
 # Aliases
 # -------
 #
+if [ "$(uname -s)" = "Darwin" ]; then
+	alias ls="ls -FG"
+else
+	alias ls="ls -F --color"
+fi
+
 alias cl="clear"
-alias l="ls -l"
-alias ll="ls -la"
+alias l="ls -lAH"
+alias la="ls -A"
+alias ll="ls -l"
 alias clean_pyc="find . -iname '*.pyc' -delete"
 alias drun="./manage.py runserver"
 alias pup="python ./setup.py sdist upload -q --show-response -r ipypi-local"

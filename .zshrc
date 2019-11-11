@@ -125,6 +125,9 @@ antibody bundle lukechilds/zsh-better-npm-completion
 antibody bundle mafredri/zsh-async
 antibody bundle sindresorhus/pure
 
+# Dracula
+# antibody bundle dracula/zsh
+
 #
 # Spaceship
 # ---------
