@@ -88,61 +88,22 @@ to be used in both shells, `.zshrc` includes it anyway.
 
 ```sh
 brew install zsh
+brew install antigen
+brew install antibody
 
-# Set as default shell
+# Set as the default shell
 sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh
 ```
 
 #### Plugins
 
-You can install plugins manually or by [antigen](https://github.com/zsh-users/antigen):
+You can install plugins manually or by [antigen](https://github.com/zsh-users/antigen)
+or [antibody](https://getantibody.github.io/):
 
 ##### Prompts
 
 - [Spaceship](https://github.com/denysdovhan/spaceship-prompt)
-
-##### Manual plugins
-
-```sh
-brew install zsh-completions
-rm -f ~/.zcompdump && compinit
-
-# History search
-brew install zsh-history-substring-search
-echo 'source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh' >> ~/.zshrc
-
-# Suggestions
-brew install zsh-autosuggestions
-echo 'source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >> ~/.zshrc
-
-# Shell commands highlighting
-brew install zsh-syntax-highlighting
-echo 'source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >> ~/.zshrc
-```
-
-##### Antigen plugins
-
-Antigen became a better option becouse some plugins don't have a bin
-distribution on brew taps, so you must clone the repo and install manually.
-
-Antigen controls that for you, you just need a github repo.
-
-```sh
-brew install antigen
-```
-
-```sh
-# .zshrc
-source /usr/local/share/antigen/antigen.zsh
-
-# Antigen plugins (check mine at .zshrc)
-antigen theme denysdovhan/spaceship-prompt
-
-antigen bundle g-plane/zsh-yarn-autocompletions
-antigen bundle lukechilds/zsh-better-npm-completion
-
-antigen apply
-```
+- [Pure](https://github.com/sindresorhus/pure)
 
 ## Python (pyenv)
 
@@ -192,6 +153,10 @@ pyenv globals 3.6.5 2.7.15 tools3 tools2
 ```
 
 ## NodeJS
+
+### Install yarn
+
+brew install yarn
 
 ### Install NVM
 

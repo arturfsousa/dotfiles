@@ -13,13 +13,24 @@ setopt nomatch
 setopt notify
 setopt correct_all
 
-# Keys
-bindkey -v
+# Key bindings
+bindkey -e
 
 # Delete
 bindkey '^[[3~' delete-char
 bindkey '^[3;5~' delete-char
 bindkey '^?' backward-delete-char
+
+# History
+bindkey '^r' history-incremental-search-backward
+
+# Cursor move
+if [[ "${terminfo[khome]}" != "" ]]; then
+  bindkey "${terminfo[khome]}" beginning-of-line
+fi
+if [[ "${terminfo[kend]}" != "" ]]; then
+  bindkey "${terminfo[kend]}"  end-of-line
+fi
 
 #
 # History
