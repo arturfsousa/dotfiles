@@ -89,8 +89,8 @@ alias ll="ls -l"
 alias clean_pyc="find . -iname '*.pyc' -delete"
 alias drun="./manage.py runserver"
 alias pup="python ./setup.py sdist upload -q --show-response -r ipypi-local"
-alias egrep="egrep --colour"
-alias grep="egrep --colour"
+alias egrep="egrep -i --colour"
+alias grep="egrep -i --colour"
 alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 
 #
@@ -99,10 +99,10 @@ alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 #
 
 #
-# Custom local_profile
-# --------------------
+# Custom local rc
+# ---------------
 #
-[ -f $HOME/.local_profile ] && source $HOME/.local_profile
+[ -f $HOME/.localrc ] && source $HOME/.localrc
 
 #
 # Custom scripts
