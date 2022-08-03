@@ -1,30 +1,30 @@
 {
-  "editor.rulers": [79],
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
-  "editor.fontLigatures": true,
-  "editor.formatOnSave": true,
-  "editor.cursorStyle": "block",
-  "editor.cursorBlinking": "smooth",
-
-  "emmet.triggerExpansionOnTab": true,
-
-  "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true,
-
-  "svgviewer.enableautopreview": true,
-
-  "workbench.colorTheme": "One Dark Pro",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.highlightModifiedTabs": true,
-
+  "workbench.colorTheme" : "Dracula",
+  "workbench.iconTheme" : "helium-icon-theme",
+  "workbench.editor.enablePreview" : false,
+  "workbench.editor.highlightModifiedTabs" : true,
+  "editor.fontFamily" : "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize" : 13,
+  "editor.fontLigatures" : true,
+  "editor.cursorStyle" : "block",
+  "editor.cursorBlinking" : "smooth",
+  "editor.minimap.enabled" : false,
   "window.zoomLevel": 0,
-
-  "[javascript]": {
-    "editor.formatOnSave": true
+  "editor.rulers" : [100],
+  "editor.formatOnSave" : false,
+  "editor.defaultFormatter" : "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave" : {
+    "source.fixAll.eslint" : true
   },
-  "files.exclude": {
-    "**/__pycache__": true,
-    "**/.pytest_cache": true
+  "files.exclude" : {
+    "**\/__pycache__" : true,
+    "**\/.pytest_cache" : true
+  },
+  "eslint.alwaysShowStatus" : true,
+  "[javascript]" : {
+    "editor.formatOnSave" : true
+  },
+  "[typescript]" : {
+    "editor.formatOnSave" : true
   }
 }
