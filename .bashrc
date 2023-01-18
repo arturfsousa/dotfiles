@@ -2,7 +2,7 @@
 # Basic
 # -----
 #
-export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch arm64" # Needed by compilers
 
 # Ensure user-installed binaries take precedence
 export PATH="/usr/local/bin:$PATH"
@@ -11,14 +11,18 @@ export PATH="/usr/local/sbin:$PATH"
 # Projects Workspace
 export PROJECT_HOME=$HOME/Projects
 
-# Colors
+# Colors for ls
 export LSCOLORS='exfxcxdxbxegedabagacad'
-export CLICOLOR=true
+export CLICOLOR=1
 
 #
 # Homebrew
 # --------
 #
+
+# Set PATH, MANPATH, etc., for Homebrew.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 [ -f $(brew --prefix)/etc/bash_completion ] && source $(brew --prefix)/etc/bash_completion
 
 #
@@ -26,32 +30,21 @@ export CLICOLOR=true
 # ------
 #
 
-# Pip
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_CONFIG_FILE=$HOME/.pip/pip.conf
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # Virtualenv
 export VIRTUALENVS_HOME=$HOME/.virtualenvs
 export WORKON_HOME=$VIRTUALENVS_HOME
 
-# Pyenv
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
+# Pip
+export PIP_REQUIRE_VIRTUALENV=true
+export PIP_CONFIG_FILE=$HOME/.pip/pip.conf
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Pyenv virtualenv
+pyenv virtualenvwrapper_lazy
 
 #
 # NodeJS
@@ -64,15 +57,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 #
-# Ruby
-# ----
-#
-
-# RVM
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-#
 # Go
 # --
 #
@@ -80,12 +64,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
-
-#
-# VS Code
-# -------
-#
-export PATH="$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin"
 
 #
 # Aliases
@@ -106,7 +84,7 @@ alias drun="./manage.py runserver"
 alias pup="python ./setup.py sdist upload -q --show-response -r ipypi-local"
 alias egrep="egrep -i --colour"
 alias grep="egrep -i --colour"
-alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
+alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew" # Fixing pyenv issue with brew doctor https://github.com/pyenv/pyenv#homebrew-in-macos
 
 #
 # General utilities
@@ -117,7 +95,7 @@ alias brew="env PATH=${PATH//$(pyenv root)\/shims:/} brew"
 # Custom local rc
 # ---------------
 #
-[ -f $HOME/.localrc ] && source $HOME/.localrc
+[ -f $HOME/.bashrc.local ] && source $HOME/.bashrc.local
 
 #
 # Custom scripts

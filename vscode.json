@@ -1,30 +1,49 @@
 {
   "workbench.colorTheme" : "Dracula",
-  "workbench.iconTheme" : "helium-icon-theme",
+  "workbench.iconTheme" : "material-icon-theme",
   "workbench.editor.enablePreview" : false,
   "workbench.editor.highlightModifiedTabs" : true,
+  "window.zoomLevel": 0,
   "editor.fontFamily" : "Fira Code, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize" : 13,
   "editor.fontLigatures" : true,
   "editor.cursorStyle" : "block",
   "editor.cursorBlinking" : "smooth",
   "editor.minimap.enabled" : false,
-  "window.zoomLevel": 0,
   "editor.rulers" : [100],
   "editor.formatOnSave" : false,
-  "editor.defaultFormatter" : "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave" : {
-    "source.fixAll.eslint" : true
-  },
   "files.exclude" : {
     "**\/__pycache__" : true,
     "**\/.pytest_cache" : true
   },
+  "eslint.format.enable": true,
   "eslint.alwaysShowStatus" : true,
   "[javascript]" : {
-    "editor.formatOnSave" : true
+    "editor.formatOnSave" : true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescript]" : {
-    "editor.formatOnSave" : true
-  }
+    "editor.formatOnSave" : true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave" : true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave" : true,
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[json]": {
+    "editor.defaultFormatter" : "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter" : "esbenp.prettier-vscode"
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true,
+  "stylelint.validate": [
+    "scss"
+  ]
 }

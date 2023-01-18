@@ -80,111 +80,47 @@ zstyle ':completion:*' format '%B---- %d%b'
 # Antigen
 # ---------
 #
-# source /usr/local/share/antigen/antigen.zsh
+source $(brew --prefix)/share/antigen/antigen.zsh
 
 #
-# Antibody
-# --------
-#
-source <(antibody init)
+# Prompt theme
+# ------------
+
+# https://github.com/spaceship-prompt/spaceship-prompt
+antigen theme spaceship-prompt/spaceship-prompt
 
 #
-# Syntax highlight
-# ----------------
-#
-# antigen bundle zdharma/fast-syntax-highlighting
-antibody bundle zdharma/fast-syntax-highlighting
+# Spaceship
+# ---------
+# ~/.spaceshiprc.zsh
 
 #
-# Autosuggestions
-# ---------------
+# History substring search
+# ------------------------
 #
-# antigen bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-autosuggestions
-
-#
-# History search
-# --------------
-#
-# antigen bundle zsh-users/zsh-history-substring-search
-antibody bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-history-substring-search
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 #
+# Syntax highlight
+# ----------------
+#
+antigen bundle zdharma-continuum/fast-syntax-highlighting
+
+#
+# Autosuggestions
+# ---------------
+#
+antigen bundle zsh-users/zsh-autosuggestions
+
+#
 # Additional completions
 # ----------------------
 #
-# antigen bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-completions
 
-# antigen bundle buonomo/yarn-completion
-antibody bundle buonomo/yarn-completion
+antigen bundle lukechilds/zsh-better-npm-completion
 
-# antigen bundle lukechilds/zsh-better-npm-completion
-antibody bundle lukechilds/zsh-better-npm-completion
-
-#
-# Prompt theme
-# ------------
-#
-# antigen theme denysdovhan/spaceship-prompt
-# antibody bundle denysdovhan/spaceship-prompt
-
-# Pure
-antibody bundle mafredri/zsh-async
-antibody bundle sindresorhus/pure
-
-# Dracula
-# antibody bundle dracula/zsh
-
-#
-# Spaceship
-# ---------
-#
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_CHAR_SYMBOL="❯"
-SPACESHIP_CHAR_SUFFIX=" "
-
-#
-# Hooks
-# -------------------------------
-#
-# autoload -U add-zsh-hook
-# nvm-auto() {
-#   local node_version="$(nvm version)"
-#   local nvmrc_path="$(nvm_find_nvmrc)"
-
-#   if [ -n "$nvmrc_path" ]; then
-#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-#     if [ "$nvmrc_node_version" = "N/A" ]; then
-#       nvm install
-#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
-#       nvm use
-#     fi
-#   elif [ "$node_version" != "$(nvm version default)" ]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd nvm-auto
-# nvm-auto
-
-
-# antigen apply
+antigen apply

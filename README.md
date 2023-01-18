@@ -12,7 +12,7 @@ Check the `vscode.json` preferences file.
 
 ### Themes
 
-- [One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)
+- [Dracula Official](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)
 - [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
 
 ### Python
@@ -40,7 +40,6 @@ Check the `vscode.json` preferences file.
 ### General
 
 - [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [Rainbow Brackets](https://marketplace.visualstudio.com/items?itemName=2gua.rainbow-brackets)
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
 - [Better TOML](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
@@ -50,10 +49,12 @@ Check the `vscode.json` preferences file.
 
 ### Iterm2
 
+https://iterm2.com/
+
 #### Color presets
 
 - `Artur.itermcolors`
-- [One Dark Terminal](https://github.com/nathanbuchar/atom-one-dark-terminal)
+- [Dracula Iterm](https://draculatheme.com/iterm)
 
 #### Font
 
@@ -61,21 +62,21 @@ Check the `vscode.json` preferences file.
 - [x] Use ligatures
 - [x] Anti-aliased
 - [x] Unicode Version 9 Widths
-- [x] Ambiguous characters are double-width
 
 - Cursor: Underline
 - [x] Blinking cursor
 
 ### Brew
 
-```sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+https://brew.sh/
 
+```sh
 brew install watchman
 brew install jq
 brew install ack
 brew install ag
 brew install wrk
+brew install tree
 ```
 
 ### Zshell
@@ -88,17 +89,14 @@ to be used in both shells, `.zshrc` includes it anyway.
 
 ```sh
 brew install zsh
-brew install antigen
-brew install antibody
+chsh -s $(which zsh) # Set as the default shell
 
-# Set as the default shell
-sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh
+brew install antigen
 ```
 
 #### Plugins
 
-You can install plugins manually or by [antigen](https://github.com/zsh-users/antigen)
-or [antibody](https://getantibody.github.io/):
+You can install plugins manually or using [antigen](https://github.com/zsh-users/antigen):
 
 ##### Prompts
 
@@ -118,50 +116,36 @@ distribution.
 brew install pyenv
 brew install pyenv-virtualenv
 brew install pyenv-virtualenvwrapper
-
-pyenv install 2.7.15
-pyenv install 3.6.5
 ```
 
 ```sh
-# Add to your .rc config
+# Add to your .bashrc
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-pyenv virtualenvwrapper_lazy
 ```
 
 ```sh
-# Comment this line in the .rc file:
+# Comment this line in the .bashrc:
 # pyenv virtualenvwrapper_lazy
 
-pyenv virtualenv 3.6.5 tools3
-pyenv virtualenv 2.7.15 tools2
+pyenv install 3.10.9
+pyenv virtualenv 3.10.9 tools
 
-pyenv activate tools3
+pyenv activate tools
 pip install ipython
 pip install pep8
 pip install flake8
 pip install pylint
 pip install black
 
-# Uncomment this line in the .rc file:
+# Uncomment this line in the .bashrc:
 # pyenv virtualenvwrapper_lazy
-```
 
-```sh
 # Set envs as global respecting the order
-pyenv globals 3.6.5 2.7.15 tools3 tools2
+pyenv globals 3.10.9 tools
 ```
 
 ## NodeJS
 
-### Install yarn
-
-brew install yarn
-
-### Install NVM
-
-```sh
-mkdir ~/.nvm
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-npm install --lts
-```
+Follow https://github.com/nvm-sh/nvm
