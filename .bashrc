@@ -66,6 +66,13 @@ export GOPATH=$HOME/Projects/go
 export PATH=$PATH:$GOPATH/bin
 
 #
+# asdf
+# ----
+#
+
+. $(brew --prefix asdf)/libexec/asdf.sh
+
+#
 # Aliases
 # -------
 #

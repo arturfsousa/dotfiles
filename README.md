@@ -71,6 +71,7 @@ https://iterm2.com/
 https://brew.sh/
 
 ```sh
+brew install coreutils
 brew install watchman
 brew install jq
 brew install ack
@@ -149,3 +150,7 @@ pyenv globals 3.10.9 tools
 ## NodeJS
 
 Follow https://github.com/nvm-sh/nvm
+
+## Java
+
+Use [asdf](https://asdf-vm.com/) to install multiple versions of java runtimes.

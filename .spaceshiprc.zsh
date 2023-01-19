@@ -6,6 +6,7 @@ SPACESHIP_PROMPT_ORDER=(
   host          # Hostname section
   git           # Git section (git_branch + git_status)
   node          # Node.js section
+  java          # Java section
   python        # Python section
   venv          # virtualenv section
   exec_time     # Execution time
