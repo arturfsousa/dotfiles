@@ -154,3 +154,7 @@ Follow https://github.com/nvm-sh/nvm
 ## Java
 
 Use [asdf](https://asdf-vm.com/) to install multiple versions of java runtimes.
+
+## iTermocil
+
+https://github.com/TomAnthony/itermocil
